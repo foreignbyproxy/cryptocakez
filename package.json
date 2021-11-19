@@ -1,22 +1,55 @@
 {
-  "name": "cryptocakez",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "12.0.3",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
-  "devDependencies": {
-    "@types/node": "16.11.7",
-    "@types/react": "17.0.34",
-    "eslint": "7.32.0",
-    "eslint-config-next": "12.0.3",
-    "typescript": "4.4.4"
-  }
+	"name": "cryptocakez",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@ensdomains/ensjs": "^2.0.1",
+		"@headlessui/react": "^1.4.1",
+		"@heroicons/react": "^1.0.5",
+		"@openzeppelin/contracts": "^4.3.2",
+		"@web3-react/core": "^6.1.9",
+		"@web3-react/injected-connector": "^6.0.7",
+		"@xstate/react": "^1.6.1",
+		"classnames": "^2.3.1",
+		"ethereum-blockies-base64": "^1.0.2",
+		"ethers": "^5.5.1",
+		"faker": "^5.5.3",
+		"firebase": "^9.4.1",
+		"formik": "^2.2.9",
+		"next": "12.0.3",
+		"react": "17.0.2",
+		"react-dom": "17.0.2",
+		"react-router-dom": "^5.3.0",
+		"use-wallet": "^0.10.0",
+		"xstate": "^4.25.0"
+	},
+	"devDependencies": {
+		"@nomiclabs/hardhat-ethers": "^2.0.2",
+		"@nomiclabs/hardhat-etherscan": "^2.1.7",
+		"@nomiclabs/hardhat-waffle": "^2.0.1",
+		"@types/node": "16.11.7",
+		"@types/react": "^17.0.33",
+		"@types/react-dom": "^17.0.10",
+		"@types/react-router-dom": "^5.3.2",
+		"@vitejs/plugin-react-refresh": "^1.3.1",
+		"autoprefixer": "^10.4.0",
+		"dotenv": "^10.0.0",
+		"eslint": "7.32.0",
+		"eslint-config-next": "12.0.3",
+		"ethereum-waffle": "^3.4.0",
+		"geopattern": "^1.2.3",
+		"hardhat": "^2.6.7",
+		"hardhat-gas-reporter": "^1.0.4",
+		"postcss": "^8.3.11",
+		"sass": "^1.43.4",
+		"sharp": "^0.29.2",
+		"solidity-coverage": "^0.7.17",
+		"tailwindcss": "^2.2.17",
+		"typescript": "4.4.4"
+	}
 }

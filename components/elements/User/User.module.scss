@@ -1,0 +1,126 @@
+.User {
+	position: relative;
+
+	.top {
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		gap: 1rem;
+
+		max-width: 200px;
+	}
+
+	.blockie {
+		width: 30px;
+		height: 30px;
+
+		border-radius: 4px;
+	}
+
+	.addressWrapper {
+		background-color: transparent;
+		border: none;
+
+		cursor: pointer;
+
+		text-align: left;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	.ens {
+		color: white;
+		font-size: 1.2rem;
+		font-weight: 600;
+
+		& + .address {
+			font-size: 0.8rem;
+		}
+	}
+
+	.address {
+		color: white;
+
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	.menuToggler {
+		color: white;
+		background-color: transparent;
+		border: 1px solid white;
+		border-radius: 2px;
+
+		cursor: pointer;
+	}
+
+	.menu {
+		position: absolute;
+		top: calc(100% + 1rem);
+		z-index: -1;
+
+		width: calc(100% + var(--padding-inline));
+
+		background-color: black;
+
+		transform: translate3d(0, 0, 0);
+
+		transition: transform 150ms ease-in-out;
+
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+
+			li {
+				border-bottom: 1px solid white;
+
+				a,
+				button {
+					display: block;
+					width: 100%;
+
+					padding: var(--button-padding);
+					border: none;
+					margin: 0;
+
+					font-size: 1rem;
+					color: white;
+					text-align: left;
+
+					background-color: black;
+
+					&:hover {
+						background-color: gray;
+					}
+				}
+
+				.copyAddress {
+					width: 40px;
+					height: 40px;
+
+					padding: 0;
+					margin: 10px;
+
+					text-align: center;
+					line-height: 1;
+
+					border: 1px solid white;
+					border-radius: 50%;
+				}
+
+				button {
+					cursor: pointer;
+				}
+
+			}
+		}
+
+		&.hidden {
+			transform: translate3d(100%, 0, 0);
+		}
+	}
+}
