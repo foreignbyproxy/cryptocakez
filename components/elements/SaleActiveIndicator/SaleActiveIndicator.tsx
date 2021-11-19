@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
-import useContract from "../../../utils/useContract";
+import getContract from "../../../utils/getContract";
 
 type SaleStatus = "active" | "inactive";
 
@@ -11,7 +11,7 @@ function SaleActiveIndicator() {
 	useEffect(() => {
 		if (web3React.active && web3React.library) {
 			const signer = web3React.library.getSigner();
-			const contract = useContract(signer);
+			const contract = getContract(signer);
 
 			contract.saleIsActive().then((data: boolean) => {
 				setStatus(data ? "active" : "inactive");

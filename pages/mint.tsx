@@ -9,7 +9,7 @@ import walletImage from "../assets/img/wallet.png";
 
 import type { NextPage } from "next";
 
-const Generate: NextPage = () => {
+const Mint: NextPage = () => {
 	const Web3Context = useWeb3React();
 
 	return (
@@ -21,7 +21,7 @@ const Generate: NextPage = () => {
 				<MintFlow />
 			) : (
 				<>
-					<Image width="150" height="150" src={walletImage} />
+					<Image width="150" height="150" src={walletImage} alt=""/>
 					<h2 className="text-lg font-bold mb-2">Connect your wallet to start</h2>
 					<Web3Connector />
 				</>
@@ -30,4 +30,4 @@ const Generate: NextPage = () => {
 	);
 };
 
-export default Generate;
+export default Mint;

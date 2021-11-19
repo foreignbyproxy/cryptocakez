@@ -1,15 +1,16 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useMachine } from "@xstate/react";
-import { createMachine, assign, actions } from "xstate";
+import { createMachine } from "xstate";
 import { useWeb3React } from "@web3-react/core";
+import Image from 'next/image';
 
 import GenericButton from "../../elements/GenericButton/GenericButton";
 
-import useContract from "../../../utils/useContract";
+import getContract from "../../../utils/getContract";
 import { getNFTByID } from "../../../utils/functions";
 import { ethers } from "ethers";
 
-import type { BigNumber } from "@ethersproject/contracts/node_modules/@ethersproject/bignumber";
+import type { BigNumber } from "@ethersproject/bignumber";
 
 interface MintFlowProps {}
 
@@ -58,7 +59,7 @@ const MintFlow: FunctionComponent<MintFlowProps> = () => {
 	useEffect(() => {
 		if (web3React.active && web3React.library) {
 			const signer = web3React.library.getSigner();
-			const NFTContract = useContract(signer);
+			const NFTContract = getContract(signer);
 			setContract(NFTContract);
 		}
 	}, [web3React.active, web3React.library]);
@@ -148,8 +149,8 @@ const MintFlow: FunctionComponent<MintFlowProps> = () => {
 	if (state.value === "success") {
 		return (
 			<>
-				<h2>Here's your NFT!</h2>
-				{state.context.nftURL && <img src={state.context.nftURL} alt="" />}
+				<h2>Here&apos;s your NFT!</h2>
+				{state.context.nftURL && <Image src={state.context.nftURL} width="250" height="250" alt="" />}
 			</>
 		);
 	}

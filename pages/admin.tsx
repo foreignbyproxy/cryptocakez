@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 
 import GenericButton from "../components/elements/GenericButton/GenericButton";
 
-import useContract from "../utils/useContract";
+import getContract from "../utils/getContract";
 import { AdminData, getAdminData } from "../utils/functions";
 
 import type { NextPage } from "next";
@@ -18,14 +18,14 @@ const Admin: NextPage = () => {
 
 	useEffect(() => {
 		if (web3React.account && web3React.library) {
-			const contract = useContract(web3React.library.getSigner());
+			const contract = getContract(web3React.library.getSigner());
 
 			getAdminData(web3React, contract).then((adminData) => {
 				setContract(contract);
 				setData(adminData);
 			});
 		}
-	}, [web3React.account, web3React.library]);
+	}, [web3React]);
 
 	function withdrawFunds() {
 		if(contract) {

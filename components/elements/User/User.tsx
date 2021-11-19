@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import makeBlockie from "ethereum-blockies-base64";
-import classNames from "classnames";
+import Image from "next/image";
 
 import styles from "./User.module.scss";
 
@@ -24,7 +24,7 @@ const User = () => {
 				setENS(ens);
 			});
 		}
-	}, [Web3Context.account]);
+	}, [Web3Context]);
 
 	if (!Web3Context.active || !Web3Context.account) {
 		return <Web3Connector />;
@@ -35,7 +35,7 @@ const User = () => {
 	return (
 		<div className={styles.User}>
 			<div className={styles.top}>
-				<img className={styles.blockie} src={icon} />
+				<Image className={styles.blockie} src={icon} width="30" height="30" alt=""/>
 				<div className={styles.addressWrapper} title={Web3Context.account}>
 					{displayENS && <p className={styles.ens}>{displayENS}</p>}
 					<p className={styles.address}>{formatAddress(Web3Context.account)}</p>

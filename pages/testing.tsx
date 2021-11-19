@@ -3,7 +3,7 @@ import { useWeb3React } from "@web3-react/core";
 import GenericButton from "../components/elements/GenericButton/GenericButton";
 import { ethers } from "ethers";
 
-import useContract from "../utils/useContract";
+import getContract from "../utils/getContract";
 
 import type { NextPage } from "next";
 
@@ -22,7 +22,7 @@ const Testing: NextPage = () => {
 	useEffect(() => {
 		if (web3React.active && web3React.library) {
 			const signer = web3React.library.getSigner();
-			const NFTContract = useContract(signer);
+			const NFTContract = getContract(signer);
 			setContract(NFTContract);
 
 			getENSInfo(web3React.library);

@@ -53,7 +53,7 @@ function FormGetNFTByID() {
 				{nft && (
 					<div>
 						<p className="mb-4">Seed: {nft.seed}</p>
-						<Image src={nft.image} layout="responsive" width="240" height="240" />
+						<Image src={nft.image} layout="responsive" width="240" height="240" alt=""/>
 					</div>
 				)}
 			</div>
