@@ -42,11 +42,12 @@ const Admin: NextPage = () => {
 		<div>
 			{data && (
 				<ul>
-					<li>Owner: {data.owner}</li>
-					<li>Is Sale Active: {data.saleActive ? "True" : "False"}</li>
-					<li>NFT Price: {`${data.nftPrice} ${ethers.constants.EtherSymbol}`}</li>
-					<li>NFTs Minted: {`${data.totalSupply} of ${data.maxSupply}`}</li>
-					<li>Contract Balance: {`${data.balance} ${ethers.constants.EtherSymbol}`}</li>
+					<li><strong>Contract Owner:</strong> {data.owner}</li>
+					<li><strong>Contract Address:</strong> {contract?.address}</li>
+					<li><strong>Is Sale Active:</strong> {data.saleActive ? "True" : "False"}</li>
+					<li><strong>NFT Price:</strong> {`${data.nftPrice} ${ethers.constants.EtherSymbol}`}</li>
+					<li><strong>NFTs Minted:</strong> {`${data.totalSupply} of ${data.maxSupply}`}</li>
+					<li><strong>Contract Balance:</strong> {`${data.balance} ${ethers.constants.EtherSymbol}`}</li>
 				</ul>
 			)}
 
