@@ -7,7 +7,7 @@ const hre = require("hardhat");
 
 async function main() {
 	const CryptoCakez = await hre.ethers.getContractFactory("CryptoCakez");
-	const contract = await CryptoCakez.deploy('http://localhost:3000/api/nft/');
+	const contract = await CryptoCakez.deploy();
 
 	await contract.deployed();
 

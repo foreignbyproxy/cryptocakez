@@ -11,19 +11,15 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract CryptoCakez is ERC721Enumerable, ReentrancyGuard, Ownable {
     using Counters for Counters.Counter;
 
-    constructor(string memory customBaseURI_) ERC721("CryptoCakez", "CAKEZ") {
-        customBaseURI = customBaseURI_;
-    }
+    constructor() ERC721("CryptoCakez", "CAKEZ"){}
 
     /** MINTING **/
     uint256 public constant MAX_SUPPLY = 2000;
-
     uint256 public constant PRICE = 20000000000000000;
 
     function mint() public payable nonReentrant {
-        require(totalSupply() < MAX_SUPPLY, "Exceeds max supply");
-
-        require(msg.value >= PRICE, "Insufficient payment, 0.02 ETH per item");
+        require(totalSupply() < MAX_SUPPLY, "No more minting");
+        require(msg.value >= PRICE, "Insufficient payment");
 
         _safeMint(_msgSender(), totalSupply());
     }
@@ -35,13 +31,8 @@ contract CryptoCakez is ERC721Enumerable, ReentrancyGuard, Ownable {
     }
 
     /** URI HANDLING **/
-    string private customBaseURI;
-    function setBaseURI(string memory customBaseURI_) external onlyOwner {
-        customBaseURI = customBaseURI_;
-    }
-
     function _baseURI() internal view virtual override returns (string memory) {
-        return customBaseURI;
+        return "https://cryptocakez.vercel.app/api/nft/";
     }
 
     /** PAYOUT **/

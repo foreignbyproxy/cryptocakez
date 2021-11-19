@@ -3,9 +3,9 @@ import contractArtifact from "../artifacts/contracts/CryptoCakez.sol/CryptoCakez
 
 import { Contract } from "@ethersproject/contracts";
 
-const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 let nftContract: Contract | null = null;
+const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as string;
 
 function getContract(provider: any) {
 	if (nftContract) {

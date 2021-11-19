@@ -1,1 +1,10 @@
-{"seed":"0x5966b3e3ed01f2f125231dfcef4b7a67cad6aeed","image":"/images/pattern-0.svg"}
+{
+	"name": "Pattern 0",
+	"description": "A #6e8c43 and #933c3c pattern generated with the seed 0xefacc6222835bbacf12a3ec8b2f55eda660ac1cb",
+	"image": "https://cryptocakez.vercel.app/images/pattern-0.svg",
+	"external_url": "https://cryptocakez.vercel.app/view?tokenid=0",
+	"attributes": [
+		{ "trait_type": "Color #1", "value": "#6e8c43" },
+		{ "trait_type": "Color #2", "value": "#933c3c" }
+	]
+}

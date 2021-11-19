@@ -45,6 +45,8 @@
 		"geopattern": "^1.2.3",
 		"hardhat": "^2.6.7",
 		"hardhat-gas-reporter": "^1.0.4",
+		"nft.storage": "^4.0.1",
+		"node-fetch": "^3.1.0",
 		"postcss": "^8.3.11",
 		"sass": "^1.43.4",
 		"sharp": "^0.29.2",

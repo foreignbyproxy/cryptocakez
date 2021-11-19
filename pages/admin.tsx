@@ -28,34 +28,69 @@ const Admin: NextPage = () => {
 	}, [web3React]);
 
 	function withdrawFunds() {
-		if(contract) {
-			contract.withdraw().then((results: any) => {
-				console.log(results);
-			}).catch((err: Error) => {
-				console.log(err);
-			})
+		if (contract) {
+			contract
+				.withdraw()
+				.then((results: any) => {
+					console.log(results);
+				})
+				.catch((err: Error) => {
+					console.log(err);
+				});
 		}
 	}
 
+	function getTokenURI(tokenID: number) {
+		if (contract) {
+			contract
+				.tokenURI(tokenID)
+				.then((results: any) => {
+					console.log(results);
+				})
+				.catch((err: Error) => {
+					console.log(err);
+				});
+		}
+	}
 
 	return (
 		<div>
 			{data && (
 				<ul>
-					<li><strong>Contract Owner:</strong> {data.owner}</li>
-					<li><strong>Contract Address:</strong> {contract?.address}</li>
-					<li><strong>Is Sale Active:</strong> {data.saleActive ? "True" : "False"}</li>
-					<li><strong>NFT Price:</strong> {`${data.nftPrice} ${ethers.constants.EtherSymbol}`}</li>
-					<li><strong>NFTs Minted:</strong> {`${data.totalSupply} of ${data.maxSupply}`}</li>
-					<li><strong>Contract Balance:</strong> {`${data.balance} ${ethers.constants.EtherSymbol}`}</li>
+					<li>
+						<strong>Contract Owner:</strong> {data.owner}
+					</li>
+					<li>
+						<strong>Contract Address:</strong> {contract?.address}
+					</li>
+					<li>
+						<strong>Is Sale Active:</strong> {data.saleActive ? "True" : "False"}
+					</li>
+					<li>
+						<strong>NFT Price:</strong>{" "}
+						{`${data.nftPrice} ${ethers.constants.EtherSymbol}`}
+					</li>
+					<li>
+						<strong>NFTs Minted:</strong> {`${data.totalSupply} of ${data.maxSupply}`}
+					</li>
+					<li>
+						<strong>Contract Balance:</strong>{" "}
+						{`${data.balance} ${ethers.constants.EtherSymbol}`}
+					</li>
 				</ul>
 			)}
 
 			{contract && (
-				<div className="mt-4">
-					<p>Withdraw Balance</p>
-					<GenericButton onClick={withdrawFunds}>Withdraw ETH</GenericButton>
-				</div>
+				<>
+					<div className="mt-4">
+						<p>Withdraw Balance</p>
+						<GenericButton onClick={withdrawFunds}>Withdraw ETH</GenericButton>
+					</div>
+					<div className="mt-4">
+						<p>Get token URI</p>
+						<GenericButton onClick={() => getTokenURI(0)}>Get Token URI</GenericButton>
+					</div>
+				</>
 			)}
 		</div>
 	);
