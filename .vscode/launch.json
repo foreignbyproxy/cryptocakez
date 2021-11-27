@@ -5,6 +5,22 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Debug NPX Hardhat",
+			"request": "launch",
+			"runtimeArgs": [
+				"hardhat",
+				"run",
+				"scripts/deploy.js",
+				"--network",
+				"rinkeby"
+			],
+			"runtimeExecutable": "npx",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"type": "pwa-node"
+		},
+		{
 			"type": "pwa-node",
 			"request": "launch",
 			"name": "Launch Program",

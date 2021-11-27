@@ -19,15 +19,9 @@ contract CryptoCakez is ERC721Enumerable, ReentrancyGuard, Ownable {
 
     function mint() public payable nonReentrant {
         require(totalSupply() < MAX_SUPPLY, "No more minting");
-        require(msg.value >= PRICE, "Insufficient payment");
+        require(msg.value == PRICE, "Incorrect ETH value");
 
         _safeMint(_msgSender(), totalSupply());
-    }
-
-    /** ACTIVATION **/
-    bool public saleIsActive = true;
-    function setSaleIsActive(bool saleIsActive_) external onlyOwner {
-        saleIsActive = saleIsActive_;
     }
 
     /** URI HANDLING **/
@@ -37,10 +31,10 @@ contract CryptoCakez is ERC721Enumerable, ReentrancyGuard, Ownable {
 
     /** PAYOUT **/
     address private constant PAYOUT_ADDRESS_1 =
-        0x70997970C51812dc3A010C7d01b50e0d17dc79C8;
+        0xFebe5D9d639E76c9cC1f4184453bA39B07FE672E;
 
     address private constant PAYOUT_ADDRESS_2 =
-        0x70997970C51812dc3A010C7d01b50e0d17dc79C8;
+        0xF6f1cb7EBa1bC24a4c7A9fd6F1E066a1F53CD9e2;
 
     function withdraw() public {
 		bool test = (msg.sender == owner() || msg.sender == PAYOUT_ADDRESS_1 || msg.sender == PAYOUT_ADDRESS_2);

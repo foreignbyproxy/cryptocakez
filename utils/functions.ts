@@ -60,9 +60,6 @@ export async function getAdminData(web3React: Web3ReactContextInterface, contrac
 	const owner = contract.owner();
 	tasks.push(owner);
 
-	const saleActive = contract.saleIsActive();
-	tasks.push(saleActive);
-
 	const nftPrice = contract.PRICE().then((value: BigNumber) => ethers.utils.formatUnits(value));
 	tasks.push(nftPrice);
 
@@ -80,7 +77,6 @@ export async function getAdminData(web3React: Web3ReactContextInterface, contrac
 	return Promise.all(tasks).then((data) => {
 		const objectKeysByIndex = [
 			"owner",
-			"saleActive",
 			"nftPrice",
 			"totalSupply",
 			"maxSupply",

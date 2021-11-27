@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 import User from "../../elements/User/User";
-import SaleActiveIndicator from "../../elements/SaleActiveIndicator/SaleActiveIndicator";
 
 interface navigationItem {
 	name: string;
@@ -67,7 +66,6 @@ const App: FunctionComponent<AppProps> = ({ children }) => {
 									</div>
 								</div>
 								<div className="flex items-center gap-4">
-									<SaleActiveIndicator />
 									<User />
 								</div>
 							</div>

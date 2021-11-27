@@ -8,6 +8,8 @@ let nftContract: Contract | null = null;
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as string;
 
 function getContract(provider: any) {
+	// debugger;
+
 	if (nftContract) {
 		return nftContract;
 	}

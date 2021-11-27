@@ -13,6 +13,7 @@ import type { Contract } from "@ethersproject/contracts";
 const Admin: NextPage = () => {
 	const [data, setData] = useState<null | AdminData>(null);
 	const [contract, setContract] = useState<Contract | null>(null);
+	const [tokenURI, setTokenURI] = useState<string>("");
 
 	const web3React = useWeb3React();
 
@@ -40,15 +41,20 @@ const Admin: NextPage = () => {
 		}
 	}
 
-	function getTokenURI(tokenID: number) {
-		if (contract) {
+	function getTokenURI(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+		let form = new FormData(e.currentTarget);
+		let tokenID = form.get("tokenID");
+
+		if (tokenID && contract) {
 			contract
 				.tokenURI(tokenID)
 				.then((results: any) => {
-					console.log(results);
+					setTokenURI(results);
 				})
 				.catch((err: Error) => {
 					console.log(err);
+					setTokenURI('There was an error fetching the tokenURI');
 				});
 		}
 	}
@@ -62,9 +68,6 @@ const Admin: NextPage = () => {
 					</li>
 					<li>
 						<strong>Contract Address:</strong> {contract?.address}
-					</li>
-					<li>
-						<strong>Is Sale Active:</strong> {data.saleActive ? "True" : "False"}
 					</li>
 					<li>
 						<strong>NFT Price:</strong>{" "}
@@ -82,13 +85,22 @@ const Admin: NextPage = () => {
 
 			{contract && (
 				<>
-					<div className="mt-4">
-						<p>Withdraw Balance</p>
+					<div className="flex gap-2 items-center mt-4">
+						<p><strong>Withdraw Balance</strong></p>
 						<GenericButton onClick={withdrawFunds}>Withdraw ETH</GenericButton>
 					</div>
-					<div className="mt-4">
-						<p>Get token URI</p>
-						<GenericButton onClick={() => getTokenURI(0)}>Get Token URI</GenericButton>
+					<div className="flex flex-col gap-1 mt-4">
+						<p><strong>Get token URI</strong></p>
+						<form
+							className="flex items-stretch gap-2"
+							action=""
+							onSubmit={getTokenURI}
+						>
+							<p className="self-center">Token ID:</p>
+							<input className="border p-2" name="tokenID" type="text" />
+							<GenericButton type="submit">Go</GenericButton>
+						</form>
+						{tokenURI && <p>{tokenURI}</p>}
 					</div>
 				</>
 			)}
