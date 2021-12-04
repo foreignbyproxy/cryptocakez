@@ -30,10 +30,10 @@ contract CryptoCakez is ERC721Enumerable, ReentrancyGuard, Ownable {
     }
 
     /** PAYOUT **/
-    address private constant PAYOUT_ADDRESS_1 =
+    address public constant PAYOUT_ADDRESS_1 =
         0xFebe5D9d639E76c9cC1f4184453bA39B07FE672E;
 
-    address private constant PAYOUT_ADDRESS_2 =
+    address public constant PAYOUT_ADDRESS_2 =
         0xF6f1cb7EBa1bC24a4c7A9fd6F1E066a1F53CD9e2;
 
     function withdraw() public {

@@ -1,4 +1,4 @@
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
 dotenv.config({
 	path: ".env.local",
 });
@@ -21,9 +21,20 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-	solidity: "0.8.9",
+	solidity: {
+		version: "0.8.9",
+		settings: {
+			optimizer: {
+				enabled: true,
+				runs: 200,
+			},
+		},
+	},
 	defaultNetwork: "localhost",
 	networks: {
+		localhost: {
+			gasPrice: 100
+		},
 		hardhat: {
 			initialBaseFeePerGas: 0, // workaround from https://github.com/sc-forks/solidity-coverage/issues/652#issuecomment-896330136 . Remove when that issue is closed.
 		},
@@ -35,7 +46,7 @@ module.exports = {
 	gasReporter: {
 		enabled: process.env.REPORT_GAS !== undefined,
 		currency: "USD",
-		coinmarketcap: process.env.COINMARKETCAP_API
+		coinmarketcap: process.env.COINMARKETCAP_API,
 	},
 	etherscan: {
 		apiKey: process.env.ETHERSCAN_API_KEY,

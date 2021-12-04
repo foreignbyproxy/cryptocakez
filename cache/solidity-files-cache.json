@@ -2,14 +2,14 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\Dev\\cryptocakez\\contracts\\CryptoCakez.sol": {
-      "lastModificationDate": 1637967672646,
-      "contentHash": "5ae5fed0eeef27e1f75096205b0aebb8",
+      "lastModificationDate": 1638572058767,
+      "contentHash": "d99530fac98b26de2dd6eb95ac6e5522",
       "sourceName": "contracts/CryptoCakez.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -50,7 +50,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -85,7 +85,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -128,7 +128,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -166,7 +166,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -203,7 +203,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -238,7 +238,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -275,7 +275,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -310,7 +310,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -347,7 +347,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -382,7 +382,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -417,7 +417,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -452,7 +452,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -489,7 +489,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -524,7 +524,7 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {

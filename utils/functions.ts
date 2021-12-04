@@ -52,6 +52,9 @@ export interface AdminData {
 	totalSupply: number;
 	maxSupply: number;
 	balance: string;
+	p1: string;
+	p2: string;
+	isPayoutRecipient: boolean;
 }
 
 export async function getAdminData(web3React: Web3ReactContextInterface, contract: Contract) {
@@ -74,6 +77,12 @@ export async function getAdminData(web3React: Web3ReactContextInterface, contrac
 		.then((value: BigNumber) => ethers.utils.formatUnits(value));
 	tasks.push(balance);
 
+	const p1 = contract.PAYOUT_ADDRESS_1();
+	tasks.push(p1);
+
+	const p2 = contract.PAYOUT_ADDRESS_2();
+	tasks.push(p2);
+
 	return Promise.all(tasks).then((data) => {
 		const objectKeysByIndex = [
 			"owner",
@@ -81,15 +90,21 @@ export async function getAdminData(web3React: Web3ReactContextInterface, contrac
 			"totalSupply",
 			"maxSupply",
 			"balance",
+			"p1",
+			"p2"
 		];
 
-		return data.reduce((accum, results, index) => {
+		let adminData = data.reduce((accum, results, index) => {
 			if (objectKeysByIndex[index]) {
 				accum[objectKeysByIndex[index]] = results;
 			}
 
 			return accum;
 		}, {});
+
+		adminData.isPayoutRecipient = [adminData.owner, adminData.p1, adminData.p2].includes(web3React.account);
+
+		return adminData;
 	});
 }
 
