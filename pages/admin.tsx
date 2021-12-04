@@ -13,8 +13,8 @@ import type { NextPage } from "next";
 import type { Contract } from "@ethersproject/contracts";
 
 interface Recipient {
-	address?: string;
-	share?: string;
+	address: string;
+	share: string;
 }
 
 interface PayoutObj {
@@ -53,7 +53,7 @@ const Admin: NextPage = () => {
 				getPayoutsData(contract).then(setPayouts);
 			}
 		}
-	}, [data, contract]);
+	}, [data, contract, web3React.account]);
 
 	function withdrawFunds() {
 		if (contract) {
@@ -69,45 +69,49 @@ const Admin: NextPage = () => {
 	}
 
 	async function getPayoutsData(contract: Contract) {
-		let gasUsed = await contract.estimateGas.withdraw();
-		let gasPrice = await contract.provider.getGasPrice();
-		let gasCost = gasUsed.mul(gasPrice);
+		if (data) {
+			let gasUsed = await contract.estimateGas.withdraw();
+			let gasPrice = await contract.provider.getGasPrice();
+			let gasCost = gasUsed.mul(gasPrice);
 
-		let contractBalance = Number(data?.balance);
-		let eachShare = contractBalance / 3;
-		let feeShare = Number(ethers.utils.formatEther(gasCost)) / 3;
+			let contractBalance = Number(data?.balance);
+			let eachShare = contractBalance / 3;
+			let feeShare = Number(ethers.utils.formatEther(gasCost)) / 3;
 
-		if (feeShare >= eachShare) {
-			eachShare = 0;
-			feeShare = 0;
+			if (feeShare >= eachShare) {
+				eachShare = 0;
+				feeShare = 0;
+			}
+
+			let payoutRecipients = [data.owner, data.p1, data.p2];
+
+			var index = payoutRecipients.indexOf(web3React.account as string);
+			if (index !== -1) {
+				payoutRecipients.splice(index, 1);
+			}
+
+			let [p1, p2] = payoutRecipients;
+
+			return {
+				you: {
+					address: web3React.account as string,
+					share: (eachShare + 2 * feeShare).toFixed(4),
+				},
+				p1: {
+					address: p1,
+					share: (eachShare - feeShare).toFixed(4),
+				},
+				p2: {
+					address: p2,
+					share: (eachShare - feeShare).toFixed(4),
+				},
+				gasUsed: gasUsed.toString(),
+				gasPrice: ethers.utils.formatUnits(gasPrice, "gwei").toString(),
+				gasCost: ethers.utils.formatEther(gasCost).toString(),
+			};
+		} else {
+			return null;
 		}
-
-		let payoutRecipients = [data?.owner, data?.p1, data?.p2];
-
-		var index = payoutRecipients.indexOf(web3React.account as string);
-		if (index !== -1) {
-			payoutRecipients.splice(index, 1);
-		}
-
-		let [p1, p2] = payoutRecipients;
-
-		return {
-			you: {
-				address: web3React.account,
-				share: (eachShare + 2 * feeShare).toFixed(4),
-			},
-			p1: {
-				address: p1,
-				share: (eachShare - feeShare).toFixed(4),
-			},
-			p2: {
-				address: p2,
-				share: (eachShare - feeShare).toFixed(4),
-			},
-			gasUsed: gasUsed.toString(),
-			gasPrice: ethers.utils.formatUnits(gasPrice, "gwei").toString(),
-			gasCost: ethers.utils.formatEther(gasCost).toString(),
-		};
 	}
 
 	function getTokenURI(e: React.FormEvent<HTMLFormElement>) {

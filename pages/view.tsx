@@ -17,7 +17,7 @@ const View: NextPage = () => {
 		if(typeof router.query.tokenid === 'string') {
 			getNFT(router.query.tokenid);
 		}
-	}, [])
+	}, [router.query.tokenid])
 
 	function getNFT(tokenID: string) {
 		getNFTByID(tokenID).then((nft) => {
