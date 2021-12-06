@@ -17,6 +17,7 @@ const navigation: navigationItem[] = [
 	{ name: "View", href: "/view" },
 	{ name: "Gallery", href: "/gallery" },
 	{ name: "Admin", href: "/admin" },
+	{ name: "Generate", href: "/generate" },
 ];
 
 interface AppProps {}
